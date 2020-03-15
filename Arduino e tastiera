@@ -1,0 +1,22 @@
+int led = 13;
+int val = 0; 
+
+void setup() {
+pinMode (led, OUTPUT);
+Serial.begin (9600); //Velocità monitor seriale
+Serial.println ("Scrivi 1 o 0");
+digitalWrite (led, LOW);
+}
+  
+void loop() {
+if (Serial.available() > 0) { //Controlla se si preme un tasto
+val = Serial.parseInt (); //Legge il codice decimale del valore scritto
+Serial.println (val);//e lo stampa a monitor
+if (val==1){
+  digitalWrite(led, HIGH);
+}
+  if (val==0){
+  digitalWrite(led, LOW);
+}
+}
+}
